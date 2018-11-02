@@ -26,7 +26,7 @@ big endian
 |  3 -  4 | TEMPERATURE | int16  | 10       | °C
 |       5 | HUMIDITY    | uint8  | 2        | %
 |  6 -  7 | ILLUMINANCE | uint16 |          | lux
-|  8 -  9 | PRESSURE    | uint16 |          | Pa
+|  8 -  9 | PRESSURE    | uint16 | 0.5      | Pa
 
 ### Header
 
