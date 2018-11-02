@@ -275,7 +275,7 @@ void application_task(void)
 
     if (!isnan(voltage_avg))
     {
-        buffer[1] = voltage_avg * 10.f;
+        buffer[1] = ceil(voltage_avg * 10.f);
     }
 
     int orientation;
@@ -328,7 +328,7 @@ void application_task(void)
 
     if (!isnan(pressure_avg))
     {
-        uint16_t value = (uint16_t) pressure_avg;
+        uint16_t value = pressure_avg / 2.f;
         buffer[8] = value >> 8;
         buffer[9] = value;
     }
