@@ -142,11 +142,19 @@ void lora_callback(bc_cmwx1zzabz_t *self, bc_cmwx1zzabz_event_t event, void *eve
     {
         bc_led_set_mode(&led, BC_LED_MODE_OFF);
     }
+    else if (event == BC_CMWX1ZZABZ_EVENT_JOIN_SUCCESS)
+    {
+        bc_atci_printf("$JOIN_OK");
+    }
+    else if (event == BC_CMWX1ZZABZ_EVENT_JOIN_ERROR)
+    {
+        bc_atci_printf("$JOIN_ERROR");
+    }
 }
 
 bool at_send(void)
 {
-    bc_scheduler_plan_now(0); 
+    bc_scheduler_plan_now(0);
 
     return true;
 }
@@ -203,7 +211,7 @@ void application_init(void)
     bc_data_stream_init(&sm_illuminance, 1, &sm_illuminance_buffer);
     bc_data_stream_init(&sm_pressure, 1, &sm_pressure_buffer);
     bc_data_stream_init(&sm_orientation, 1, &sm_orientation_buffer);
-    
+
     // Initialize LED
     bc_led_init(&led, BC_GPIO_LED, false, false);
     bc_led_set_mode(&led, BC_LED_MODE_ON);
@@ -259,7 +267,7 @@ void application_task(void)
     if (!bc_cmwx1zzabz_is_ready(&lora))
     {
         bc_scheduler_plan_current_relative(100);
-        
+
         return;
     }
 
@@ -284,7 +292,7 @@ void application_task(void)
     {
         buffer[2] = orientation;
     }
-    
+
     float temperature_avg = NAN;
 
     bc_data_stream_get_average(&sm_temperature, &temperature_avg);
@@ -336,7 +344,7 @@ void application_task(void)
     bc_cmwx1zzabz_send_message(&lora, buffer, sizeof(buffer));
 
     static char tmp[sizeof(buffer) * 2 + 1];
-    for (size_t i = 0; i < sizeof(buffer); i++) 
+    for (size_t i = 0; i < sizeof(buffer); i++)
     {
         sprintf(tmp + i * 2, "%02x", buffer[i]);
     }
