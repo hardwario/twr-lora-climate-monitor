@@ -193,6 +193,29 @@ bool at_join(void)
     return true;
 }
 
+bool at_nwk_read(void)
+{
+    uint8_t nwk_public = bc_cmwx1zzabz_get_nwk_public(_at.lora);
+
+    bc_atci_printf("$NWK: %d", nwk_public);
+
+    return true;
+}
+
+bool at_nwk_set(bc_atci_param_t *param)
+{
+    uint8_t nwk_public = atoi(param->txt);
+
+    if (nwk_public > 1)
+    {
+        return false;
+    }
+
+    bc_cmwx1zzabz_set_nwk_public(_at.lora, nwk_public);
+
+    return true;
+}
+
 bool at_blink(void)
 {
     bc_led_blink(_at.led, 3);

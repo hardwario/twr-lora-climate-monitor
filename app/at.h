@@ -13,6 +13,7 @@
                          {"$APPEUI", NULL, at_appeui_set, at_appeui_read, NULL, ""},\
                          {"$BAND", NULL, at_band_set, at_band_read, NULL, "0:AS923, 1:AU915, 5:EU868, 6:KR920, 7:IN865, 8:US915"},\
                          {"$MODE", NULL, at_mode_set, at_mode_read, NULL, "0:ABP, 1:OTAA"},\
+                         {"$NWK", NULL, at_nwk_set, at_nwk_read, NULL, "Network type 0:private, 1:public"},\
                          {"$JOIN", at_join, NULL, NULL, NULL, "Send OTAA Join packet"}
 
 #define AT_LED_COMMANDS {"$BLINK", at_blink, NULL, NULL, NULL, "LED blink 3 times"},\
@@ -43,6 +44,9 @@ bool at_band_set(bc_atci_param_t *param);
 
 bool at_mode_read(void);
 bool at_mode_set(bc_atci_param_t *param);
+
+bool at_nwk_read(void);
+bool at_nwk_set(bc_atci_param_t *param);
 
 bool at_join(void);
 bool at_blink(void);
