@@ -2,9 +2,9 @@
 
 # Firmware for HARDWARIO Lora Climate Monitor
 
-[![Travis](https://img.shields.io/travis/bigclownlabs/bcf-lora-climate-monitor/master.svg)](https://travis-ci.org/bigclownlabs/bcf-lora-climate-monitor)
-[![Release](https://img.shields.io/github/release/bigclownlabs/bcf-lora-climate-monitor.svg)](https://github.com/bigclownlabs/bcf-lora-climate-monitor/releases)
-[![License](https://img.shields.io/github/license/bigclownlabs/bcf-lora-climate-monitor.svg)](https://github.com/bigclownlabs/bcf-lora-climate-monitor/blob/master/LICENSE)
+[![Travis](https://img.shields.io/travis/hardwario/twr-lora-climate-monitor/master.svg)](https://travis-ci.org/hardwario/twr-lora-climate-monitor)
+[![Release](https://img.shields.io/github/release/hardwario/twr-lora-climate-monitor.svg)](https://github.com/hardwario/twr-lora-climate-monitor/releases)
+[![License](https://img.shields.io/github/license/hardwario/twr-lora-climate-monitor.svg)](https://github.com/hardwario/twr-lora-climate-monitor/blob/master/LICENSE)
 [![Twitter](https://img.shields.io/twitter/follow/hardwario_en.svg?style=social&label=Follow)](https://twitter.com/hardwario_en)
 
 ## Description
