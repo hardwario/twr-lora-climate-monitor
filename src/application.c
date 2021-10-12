@@ -144,11 +144,11 @@ void lora_callback(twr_cmwx1zzabz_t *self, twr_cmwx1zzabz_event_t event, void *e
     }
     else if (event == TWR_CMWX1ZZABZ_EVENT_JOIN_SUCCESS)
     {
-        twr_atci_printf("$JOIN_OK");
+        twr_atci_printfln("$JOIN_OK");
     }
     else if (event == TWR_CMWX1ZZABZ_EVENT_JOIN_ERROR)
     {
-        twr_atci_printf("$JOIN_ERROR");
+        twr_atci_printfln("$JOIN_ERROR");
     }
 }
 
@@ -181,11 +181,11 @@ bool at_status(void)
 
         if (twr_data_stream_get_average(values[i].stream, &value_avg))
         {
-            twr_atci_printf("$STATUS: \"%s\",%.*f", values[i].name, values[i].precision, value_avg);
+            twr_atci_printfln("$STATUS: \"%s\",%.*f", values[i].name, values[i].precision, value_avg);
         }
         else
         {
-            twr_atci_printf("$STATUS: \"%s\",", values[i].name);
+            twr_atci_printfln("$STATUS: \"%s\",", values[i].name);
         }
     }
 
@@ -193,11 +193,11 @@ bool at_status(void)
 
     if (twr_data_stream_get_median(&sm_orientation, &orientation))
     {
-        twr_atci_printf("$STATUS: \"Orientation\",%d", orientation);
+        twr_atci_printfln("$STATUS: \"Orientation\",%d", orientation);
     }
     else
     {
-        twr_atci_printf("$STATUS: \"Orientation\",", orientation);
+        twr_atci_printfln("$STATUS: \"Orientation\",", orientation);
     }
 
     return true;
@@ -348,7 +348,7 @@ void application_task(void)
         sprintf(tmp + i * 2, "%02x", buffer[i]);
     }
 
-    twr_atci_printf("$SEND: %s", tmp);
+    twr_atci_printfln("$SEND: %s", tmp);
 
     header = HEADER_UPDATE;
 
