@@ -1,6 +1,6 @@
 <a href="https://www.hardwario.com/"><img src="https://www.hardwario.com/ci/assets/hw-logo.svg" width="200" alt="HARDWARIO Logo" align="right"></a>
 
-# Firmware for HARDWARIO Lora Climate Monitor
+# Firmware for HARDWARIO LoRa Climate Monitor
 
 [![build](https://github.com/hardwario/twr-lora-climate-monitor/actions/workflows/main.yml/badge.svg)](https://github.com/hardwario/twr-lora-climate-monitor/actions/workflows/main.yml)
 [![Release](https://img.shields.io/github/release/hardwario/twr-lora-climate-monitor.svg)](https://github.com/hardwario/twr-lora-climate-monitor/releases)
