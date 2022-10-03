@@ -1,5 +1,4 @@
-#include <application.h>
-#include <at.h>
+#include <twr.h>
 
 #define SEND_DATA_INTERVAL        (15 * 60 * 1000)
 #define MEASURE_INTERVAL               (30 * 1000)
@@ -49,9 +48,8 @@ void button_event_handler(twr_button_t *self, twr_button_event_t event, void *ev
     }
     else if (event == TWR_BUTTON_EVENT_HOLD)
     {
-        header = HEADER_BUTTON_HOLD;
-
-        twr_scheduler_plan_now(0);
+        twr_led_set_mode(&led, TWR_LED_MODE_BLINK);
+        twr_cmwx1zzabz_join(&lora);
     }
 }
 
@@ -145,6 +143,7 @@ void lora_callback(twr_cmwx1zzabz_t *self, twr_cmwx1zzabz_event_t event, void *e
     else if (event == TWR_CMWX1ZZABZ_EVENT_JOIN_SUCCESS)
     {
         twr_atci_printfln("$JOIN_OK");
+        twr_led_set_mode(&led, TWR_LED_MODE_OFF);
     }
     else if (event == TWR_CMWX1ZZABZ_EVENT_JOIN_ERROR)
     {
@@ -247,12 +246,11 @@ void application_init(void)
     twr_cmwx1zzabz_set_class(&lora, TWR_CMWX1ZZABZ_CONFIG_CLASS_A);
 
     // Initialize AT command interface
-    at_init(&led, &lora);
+    twr_at_lora_init(&lora);
     static const twr_atci_command_t commands[] = {
-            AT_LORA_COMMANDS,
+            TWR_AT_LORA_COMMANDS,
             {"$SEND", at_send, NULL, NULL, NULL, "Immediately send packet"},
             {"$STATUS", at_status, NULL, NULL, NULL, "Show status"},
-            AT_LED_COMMANDS,
             TWR_ATCI_COMMAND_CLAC,
             TWR_ATCI_COMMAND_HELP
     };
